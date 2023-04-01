@@ -2,18 +2,6 @@
 import "bootstrap";
 import "./style.css";
 
-const btnNewCard = document.querySelector(".btn-generate-new-card");
-
-btnNewCard.addEventListener("click", generateNewCard);
-
-function generateNewCard() {
-  const cardContainer = document.querySelector("#table");
-  const cardNumberIndex = randomNumber(1, 13);
-  const cardSuitIndex = randomNumber(1, 4);
-
-  cardContainer.innerHTML = cardConstructor(cardNumberIndex, cardSuitIndex);
-}
-
 function randomNumber(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -59,6 +47,36 @@ function cardConstructor(cardIndex = 1, suitIndex = 1) {
   return card;
 }
 
+function generateNewCard() {
+  const cardContainer = document.querySelector("#table");
+  const cardNumberIndex = randomNumber(1, 13);
+  const cardSuitIndex = randomNumber(1, 4);
+
+  cardContainer.innerHTML = cardConstructor(cardNumberIndex, cardSuitIndex);
+}
+
 window.onload = () => {
   generateNewCard();
 };
+
+// FILLING CONFIDENT
+// +1 button
+const btnNewCard = document.querySelector(".btn-generate-new-card");
+btnNewCard.addEventListener("click", btnGenerateNewCard);
+
+// added after the timer funcionality.
+// on button pressing to generate a new card,
+// resets the timer
+function btnGenerateNewCard() {
+  clearInterval(timerNewCard);
+  generateNewCard();
+  timerNewCard = timerNewCardTenSeconds;
+  timerNewCard();
+}
+
+// +1 timer
+const timerNewCardTenSeconds = () => {
+  setInterval(generateNewCard, 10000);
+};
+let timerNewCard = timerNewCardTenSeconds;
+timerNewCard();
