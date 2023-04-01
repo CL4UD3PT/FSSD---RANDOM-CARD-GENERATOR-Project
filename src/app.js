@@ -35,11 +35,11 @@ function cardConstructor(cardIndex = 1, suitIndex = 1) {
   const cardSuit = getCardSuit(suitIndex);
   const suitClass = classSuitColor(suitIndex);
 
-  const card = `<div class="card ${suitClass}">
+  const card = `<div id="card" class="card ${suitClass}">
                   <div class="fs-3 d-flex justify-content-start">
                     <span class="card-number d-inline-block">${cardNumber}</span>
                   </div>
-                  <div class="card-suit fs-1">${cardSuit}</div>
+                  <div class="card-suit fs-1 h-100 d-flex justify-content-center align-items-center">${cardSuit}</div>
                   <div class="fs-3 d-flex justify-content-end">
                     <span class="card-number rotate-180 d-inline-block">${cardNumber}</span>
                   </div>
@@ -79,4 +79,22 @@ const timerNewCardTenSeconds = () => {
   setInterval(generateNewCard, 10000);
 };
 let timerNewCard = timerNewCardTenSeconds;
-timerNewCard();
+// timerNewCard();
+
+// +1 card width & height inputs
+let cardWidth = document.querySelector(".input-width");
+let cardHeight = document.querySelector(".input-height");
+
+cardWidth.addEventListener("keyup", event => {
+  if (event.key == "Enter") {
+    let card = document.querySelector(".card");
+    card.style.width = cardWidth.value + "px";
+  }
+});
+
+cardHeight.addEventListener("keyup", event => {
+  if (event.key == "Enter") {
+    let card = document.querySelector(".card");
+    card.style.height = cardHeight.value + "px";
+  }
+});

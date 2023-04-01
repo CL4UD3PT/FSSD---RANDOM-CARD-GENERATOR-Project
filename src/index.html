@@ -13,12 +13,24 @@
     <link rel="shortcut icon" href="./4geeks.ico" />
   </head>
   <body>
-    <div class="container-fluid text-center bg-success vh-100">
+    <div class="container-fluid text-center bg-success vh-100 z-index-2">
       <div id="table" class="d-flex align-items-center"></div>
       <div class="col-3 mx-auto m-4">
         <button class="btn-generate-new-card button-perspective" role="button">
           New Random Card
         </button>
+      </div>
+      <div class="col-3 mx-auto m-4 d-flex flex-column">
+        <div class="col-three">
+          <input class="input-width effect-17" type="text" placeholder="" />
+          <label>Card Width</label>
+          <span class="focus-border"></span>
+        </div>
+        <div class="col-three">
+          <input class="input-height effect-17" type="text" placeholder="" />
+          <label>Card Height</label>
+          <span class="focus-border"></span>
+        </div>
       </div>
     </div>
   </body>
