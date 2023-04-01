@@ -79,7 +79,7 @@ const timerNewCardTenSeconds = () => {
   setInterval(generateNewCard, 10000);
 };
 let timerNewCard = timerNewCardTenSeconds;
-// timerNewCard();
+timerNewCard();
 
 // +1 card width & height inputs
 let cardWidth = document.querySelector(".input-width");
@@ -89,6 +89,7 @@ cardWidth.addEventListener("keyup", event => {
   if (event.key == "Enter") {
     let card = document.querySelector(".card");
     card.style.width = cardWidth.value + "px";
+    cardWidth.value = "";
   }
 });
 
@@ -96,5 +97,6 @@ cardHeight.addEventListener("keyup", event => {
   if (event.key == "Enter") {
     let card = document.querySelector(".card");
     card.style.height = cardHeight.value + "px";
+    cardHeight.value = "";
   }
 });
