@@ -2,10 +2,17 @@
 import "bootstrap";
 import "./style.css";
 
-// let numCards = 0;
-// const cards = [];
-// const faces = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
-// const suits = [1, 2, 3, 4];
+const btnNewCard = document.querySelector(".btn-generate-new-card");
+
+btnNewCard.addEventListener("click", generateNewCard);
+
+function generateNewCard() {
+  const cardContainer = document.querySelector("#table");
+  const cardNumberIndex = randomNumber(1, 13);
+  const cardSuitIndex = randomNumber(1, 4);
+
+  cardContainer.innerHTML = cardConstructor(cardNumberIndex, cardSuitIndex);
+}
 
 function randomNumber(min, max) {
   min = Math.ceil(min);
@@ -53,9 +60,5 @@ function cardConstructor(cardIndex = 1, suitIndex = 1) {
 }
 
 window.onload = () => {
-  const cardContainer = document.querySelector("#table");
-  const cardNumberIndex = randomNumber(1, 13);
-  const cardSuitIndex = randomNumber(1, 4);
-
-  cardContainer.innerHTML = cardConstructor(cardNumberIndex, cardSuitIndex);
+  generateNewCard();
 };
