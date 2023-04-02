@@ -85,18 +85,20 @@ timerNewCard();
 let cardWidth = document.querySelector(".input-width");
 let cardHeight = document.querySelector(".input-height");
 
-cardWidth.addEventListener("keyup", event => {
-  if (event.key == "Enter") {
-    let card = document.querySelector(".card");
-    card.style.width = cardWidth.value + "px";
-    cardWidth.value = "";
-  }
+cardWidth.addEventListener("input", event => {
+  let card = document.querySelector(".card");
+  card.style.width = cardWidth.value + "px";
 });
 
-cardHeight.addEventListener("keyup", event => {
-  if (event.key == "Enter") {
-    let card = document.querySelector(".card");
-    card.style.height = cardHeight.value + "px";
-    cardHeight.value = "";
-  }
+cardHeight.addEventListener("input", event => {
+  let card = document.querySelector(".card");
+  card.style.height = cardHeight.value + "px";
 });
+
+cardWidth.addEventListener("change", clearInputValue);
+cardHeight.addEventListener("change", clearInputValue);
+
+function clearInputValue() {
+  console.log(this);
+  this.value = "";
+}
